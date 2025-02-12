@@ -1,18 +1,53 @@
-letterBase = ['A', 'B', 'C', 'D', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+letterBase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 
 
-'''
-[cipherChar]
 
-Inputs:
-char = Capital Letter
-shiftNumber = Positive Integer
-
-return: Capital Letter
-'''
 
 def cipherChar(char, shiftNumber):
     for i in range(len(letterBase)):
         if char == letterBase[i]:
             newLetter = letterBase[(i + shiftNumber) % 25]
+            break
     return newLetter
+
+
+
+
+def caesarCipher(string, shiftNumber):
+    updatedWords = []
+
+    #Split Up Words
+    words = string.split()
+
+    for word in words:
+
+        newChars = [] #Add Updated Characters to Temporary List
+
+        #Iterate Through Characters in Order to Update Them
+        for char in word:
+
+            #Handles Characters
+            if char.upper() in letterBase:
+                char = char.upper()
+                char = cipherChar(char, shiftNumber)
+                newChars.append(char)
+
+            #Handles Symbols & Numbers
+            else:
+                newChars.append(char)
+
+        #Merge Updated Characters from newChars & Add to updatedWords
+        updatedWords.append("".join(newChars))
+    
+    stringOut = " ".join(updatedWords)
+    
+    return stringOut
+            
+
+
+
+print(caesarCipher("hello bobby THIS IS AWESOME!", 1))
+
+
+
+#lower case?

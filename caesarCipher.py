@@ -4,7 +4,6 @@ def cipherChar(char, shiftNumber):
     for i in range(len(letterBase)):
         if char == letterBase[i]:
             newLetter = letterBase[(i + shiftNumber) % 26]
-            break
     return newLetter
 
 def cipherString(string, shiftNumber):
@@ -38,8 +37,14 @@ def cipherString(string, shiftNumber):
     return stringOut
 
 
-def decrypt(string):
+
+def bruteDecrypt(string):
     for i in range(26):
         print(cipherString(string, i))
+
+def decrypt(string, shiftNumber):
+    print(cipherString(string, 26-shiftNumber))
+
+
 
 

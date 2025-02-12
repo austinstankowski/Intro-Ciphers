@@ -1,19 +1,13 @@
 letterBase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 
-
-
-
 def cipherChar(char, shiftNumber):
     for i in range(len(letterBase)):
         if char == letterBase[i]:
-            newLetter = letterBase[(i + shiftNumber) % 25]
+            newLetter = letterBase[(i + shiftNumber) % 26]
             break
     return newLetter
 
-
-
-
-def caesarCipher(string, shiftNumber):
+def cipherString(string, shiftNumber):
     updatedWords = []
 
     #Split Up Words
@@ -42,12 +36,10 @@ def caesarCipher(string, shiftNumber):
     stringOut = " ".join(updatedWords)
     
     return stringOut
-            
 
 
+def decrypt(string):
+    for i in range(26):
+        print(cipherString(string, i))
 
-print(caesarCipher("hello bobby THIS IS AWESOME!", 1))
 
-
-
-#lower case?

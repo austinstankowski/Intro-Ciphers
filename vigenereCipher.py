@@ -69,7 +69,8 @@ def encrypt_menu():
 def decrypt_menu():
     message = input("Enter the message you'd like to decrypt: ")
     key = input("Enter the decryption key: ")
-    print("Decrypted Message:", vigenereDecrypt(message, key))
+    cleanedKey = cleanKey(key)
+    print("Decrypted Message:", vigenereDecrypt(message, cleanedKey))
 
 def main():
     options = {"1": "Encrypt", "2": "Decrypt", "3": "Quit"}
